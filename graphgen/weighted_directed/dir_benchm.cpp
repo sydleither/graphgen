@@ -568,7 +568,7 @@ int internal_degree_and_membership (double mixing_parameter, int overlapping_nod
 			try_this = irand(available_nodes.size()-1);
 			if(kr==3*num_nodes) {
                 
-				if(change_community_size(num_seq)==-1) {
+				/*if(change_community_size(num_seq)==-1) {
 					
 					cerr<<"\n***********************\nERROR: this program needs more than one community to work fine"<<endl;
 					return -1;
@@ -582,8 +582,8 @@ int internal_degree_and_membership (double mixing_parameter, int overlapping_nod
 					cout<<num_seq[i]<<" ";
 				cout<<endl<<endl;
 				
-				return (internal_degree_and_membership(mixing_parameter, overlapping_nodes, max_mem_num, num_nodes, member_matrix, excess, defect, degree_seq_in, degree_seq_out, num_seq, internal_degree_seq_in, internal_degree_seq_out, fixed_range, nmin, nmax, tau2));
-                
+				return (internal_degree_and_membership(mixing_parameter, overlapping_nodes, max_mem_num, num_nodes, member_matrix, excess, defect, degree_seq_in, degree_seq_out, num_seq, internal_degree_seq_in, internal_degree_seq_out, fixed_range, nmin, nmax, tau2));*/
+                		return -1;
                 
 			}
 			
