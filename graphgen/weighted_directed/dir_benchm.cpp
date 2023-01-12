@@ -90,19 +90,7 @@ double solve_dmin(const double& dmax, const double &dmed, const double &gamma) {
 	
 	
 	if ((average_k1-dmed>0) || (average_k2-dmed<0)) {
-		
-		cerr<<"\n***********************\nERROR: the average degree is out of range:";
-		
-		if (average_k1-dmed>0) {
-			cerr<<"\nyou should increase the average degree (bigger than "<<average_k1<<")"<<endl; 
-			cerr<<"(or decrease the maximum degree...)"<<endl;
-		}
-		
-		if (average_k2-dmed<0) {
-			cerr<<"\nyou should decrease the average degree (smaller than "<<average_k2<<")"<<endl; 
-			cerr<<"(or increase the maximum degree...)"<<endl;
-		}
-		
+
 		return -1;	
 	}
 	
@@ -378,7 +366,6 @@ int internal_degree_and_membership (double mixing_parameter, int overlapping_nod
 	
 	if(num_nodes< overlapping_nodes) {
 		
-		cerr<<"\n***********************\nERROR: there are more overlapping nodes than nodes in the whole network! Please, decrease the former ones or increase the latter ones"<<endl;
 		return -1;
 	}
 	
@@ -518,7 +505,6 @@ int internal_degree_and_membership (double mixing_parameter, int overlapping_nod
 	
 	if(build_bipartite_network(member_matrix, member_numbers, num_seq)==-1) {
 		
-		cerr<<"it seems that the overlapping nodes need more communities that those I provided. Please increase the number of communities or decrease the number of overlapping nodes"<<endl;
 		return -1;			
         
 	}
@@ -689,7 +675,6 @@ int build_subgraph(deque<set<int> > & Ein, deque<set<int> > & Eout, const deque<
 	
 	if(d_in.size()<3) {
 		
-		cerr<<"it seems that some communities should have only 2 nodes! This does not make much sense (in my opinion) Please change some parameters!"<<endl;
 		return -1;
         
 	}
@@ -1014,7 +999,6 @@ int build_subgraph(deque<set<int> > & Ein, deque<set<int> > & Eout, const deque<
 			
 			if(stopper_ml==2*Ein.size()) {
                 
-				cout<<"sorry, I need to change the degree distribution a little bit (one less link)"<<endl;
 				break;
                 
 			}
@@ -1724,7 +1708,6 @@ int erase_links(deque<set<int> > & Ein, deque<set<int> > & Eout, const deque<deq
                 //---------------------------------------------------------------------------------
 				
 				
-				cout<<"degree sequence changed to respect the option -sup ... "<<++eras_add_times<<endl;
 				
 				deque<int> deqar;
 				for (set<int>::iterator it_est=Ein[i].begin(); it_est!=Ein[i].end(); it_est++)
@@ -1734,7 +1717,6 @@ int erase_links(deque<set<int> > & Ein, deque<set<int> > & Eout, const deque<deq
 				
 				if(deqar.size()==Ein[i].size()) {	// this shouldn't happen...
                     
-					cerr<<"sorry, something went wrong: there is a node which does not respect the constraints. (option -sup)"<<endl;
 					return -1;
                     
 				}
@@ -1760,7 +1742,6 @@ int erase_links(deque<set<int> > & Ein, deque<set<int> > & Eout, const deque<deq
 				//---------------------------------------------------------------------------------
                 
 				
-				cout<<"degree sequence changed to respect the option -inf ... "<<++eras_add_times<<endl;
                 
                 
 				int stopper_here=num_nodes;
@@ -1777,7 +1758,6 @@ int erase_links(deque<set<int> > & Ein, deque<set<int> > & Eout, const deque<deq
 				
 				if(stopper_==stopper_here) {	// this shouldn't happen...
                     
-					cerr<<"sorry, something went wrong: there is a node which does not respect the constraints. (option -inf)"<<endl;
 					return -1;
                     
 				}
