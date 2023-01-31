@@ -815,12 +815,30 @@ int benchmark(bool excess, bool defect, int num_nodes, double  average_k,
 	deque<map <int, double > > neigh_weigh_in;
 	deque<map <int, double > > neigh_weigh_out;
 	
-	deque<int>::iterator it;
-    	for (it = Ein.begin(); it != Ein.end(); ++it) {
-	      for (set<int>::iterator s = it->begin(); s != it->end(); s++) {                                                        
-		  cout << *s << ' ';
-	      }
-	      cout << endl;
+	cout << "Ein\n" << endl;
+    	for (int i = 0; i < Ein.size(); i++) {
+            for (auto& str : Ein[i]) {
+                std::cout << str << ' ';
+            }
+	    cout << endl;
+    	cout << '\n';
+	}
+	
+	cout << "Eout\n" << endl;
+    	for (int i = 0; i < Eout.size(); i++) {
+            for (auto& str : Eout[i]) {
+                std::cout << str << ' ';
+            }
+	    cout << endl;
+    	cout << '\n';
+	}
+	
+	cout << "Member list\n" << endl;
+    	for (int i = 0; i < member_list.size(); i++) {
+            for (int j = 0; j < member_list[i].size(); j++) {
+                std::cout << member_list[i][j] << ' ';
+            }
+	    cout << endl;
     	cout << '\n';
 	}
 
