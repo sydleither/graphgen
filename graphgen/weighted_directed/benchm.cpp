@@ -815,31 +815,31 @@ int benchmark(bool excess, bool defect, int num_nodes, double  average_k,
 	deque<map <int, double > > neigh_weigh_in;
 	deque<map <int, double > > neigh_weigh_out;
 	
-	cout << "Ein\n" << endl;
+	cerr << "Ein\n" << endl;
     	for (int i = 0; i < Ein.size(); i++) {
             for (auto& str : Ein[i]) {
-                std::cout << str << ' ';
+                cerr << str << ' ';
             }
-	    cout << endl;
-    	cout << '\n';
+	    cerr << endl;
+    	cerr << '\n';
 	}
 	
-	cout << "Eout\n" << endl;
+	cerr << "Eout\n" << endl;
     	for (int i = 0; i < Eout.size(); i++) {
             for (auto& str : Eout[i]) {
-                std::cout << str << ' ';
+                cerr << str << ' ';
             }
-	    cout << endl;
-    	cout << '\n';
+	    cerr << endl;
+    	cerr << '\n';
 	}
 	
-	cout << "Member list\n" << endl;
+	cerr << "Member list\n" << endl;
     	for (int i = 0; i < member_list.size(); i++) {
             for (int j = 0; j < member_list[i].size(); j++) {
-                std::cout << member_list[i][j] << ' ';
+                cerr << member_list[i][j] << ' ';
             }
-	    cout << endl;
-    	cout << '\n';
+	    cerr << endl;
+    	cerr << '\n';
 	}
 
 	weights(Ein, Eout, member_list, beta, mixing_parameter2, neigh_weigh_in,
