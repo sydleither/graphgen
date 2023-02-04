@@ -815,7 +815,7 @@ int benchmark(bool excess, bool defect, int num_nodes, double  average_k,
 	deque<map <int, double > > neigh_weigh_in;
 	deque<map <int, double > > neigh_weigh_out;
 	
-	cerr << "Ein\n" << endl;
+	/*cerr << "Ein\n" << endl;
     	for (int i = 0; i < Ein.size(); i++) {
             for (auto& str : Ein[i]) {
                 cerr << str << ' ';
@@ -840,7 +840,7 @@ int benchmark(bool excess, bool defect, int num_nodes, double  average_k,
             }
 	    cerr << endl;
     	cerr << '\n';
-	}
+	}*/
 
 	weights(Ein, Eout, member_list, beta, mixing_parameter2, neigh_weigh_in,
           neigh_weigh_out);
