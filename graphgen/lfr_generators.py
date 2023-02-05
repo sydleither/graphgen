@@ -2,6 +2,7 @@ from graphgen.weighted_undirected_graph_generator import GenerateWeightedUndirec
 from graphgen.unweighted_undirected_graph_generator import GenerateUnweightedUndirectedGraph
 from graphgen.weighted_directed_graph_generator import GenerateWeightedDirectedGraph
 from graphgen.unweighted_directed_graph_generator import GenerateUnweightedDirectedGraph
+from graphgen.klemm_graph_generator import GenerateKlemmGraph
 import networkx as nx
 import numpy as np
 import inspect
@@ -217,6 +218,37 @@ def weighted_directed_lfr_as_adj(*args, **kwargs):
 
     edge_array, community_membership, weights = weighted_directed_lfr_graph(*args,
                                                                             **graph_pars)
+    return (convert_weighted_to_numpy_matrix(edge_array,
+                                             weights=weights, **converter_pars),
+            community_membership)
+
+
+def klemm_graph(num_nodes, clique_size, clique_linkage, muw, beta, seed,
+                edge_dtype=None, weight_dtype=None):
+    if edge_dtype is None:
+        edge_dtype = DEFAULT_INT
+    if weight_dtype is None:
+        weight_dtype = DEFAULT_FLOAT
+
+    edge_array, community_memberships, weights = GenerateKlemmGraph(
+        num_nodes, clique_size, clique_linkage, muw, beta, seed)
+
+    if edge_array.dtype != edge_dtype:
+        edge_array = edge_array.astype(edge_dtype)
+    if weights.dtype != weight_dtype:
+        weights = weights.astype(weight_dtype)
+
+    return edge_array, community_memberships, weights
+
+
+def klemm_as_adj(*args, **kwargs):
+    graph_pars = {key: value for key, value in kwargs.items()
+                  if key in inspect.getfullargspec(klemm_graph).args}
+
+    converter_pars = {key: value for key, value in kwargs.items()
+                      if key in inspect.getfullargspec(convert_weighted_to_numpy_matrix).args}
+
+    edge_array, community_membership, weights = klemm_graph(*args, **graph_pars)
     return (convert_weighted_to_numpy_matrix(edge_array,
                                              weights=weights, **converter_pars),
             community_membership)

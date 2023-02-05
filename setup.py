@@ -58,7 +58,7 @@ weighted_directed_include_dirs = [
 
 weighted_directed_sources = [
     'graphgen/weighted_directed/benchm.cpp',
-    'graphgen/weighted_directed/weighted_directed_graph_generator.cpp'
+    'graphgen/weighted_directed/weighted_directed_graph_generator.cpp',
 ]
 
 weighted_directed_module = Extension('weighted_directed_graph_generator',
@@ -67,6 +67,25 @@ weighted_directed_module = Extension('weighted_directed_graph_generator',
                                          extra_compile_args=extra_compile_args,
                                          include_dirs=weighted_directed_include_dirs,
                                          extra_link_args=extra_link_args)
+
+# klemm module specifications
+klemm_include_dirs = [
+    'graphgen/klemm',
+    numpy_include_path
+]
+
+klemm_sources = [
+    'graphgen/klemm/benchm.cpp',
+    'graphgen/klemm/klemm_graph_generator.cpp',
+]
+
+klemm_module = Extension('klemm_graph_generator',
+                                         language="c++14",
+                                         sources=klemm_sources,
+                                         extra_compile_args=extra_compile_args,
+                                         include_dirs=klemm_include_dirs,
+                                         extra_link_args=extra_link_args)
+
 
 # weighted undirected module specifications
 weighted_undirected_include_dirs = [
@@ -93,8 +112,8 @@ setup(name='graphgen',
       author='Nathaniel Rodriguez',
       packages=[PACKAGE_NAME],
       ext_package=PACKAGE_NAME,
-      ext_modules=[unweighted_directed_module, unweighted_undirected_module,
-                   weighted_directed_module, weighted_undirected_module],
+      ext_modules=[unweighted_directed_module, unweighted_undirected_module, weighted_directed_module,
+                   klemm_module, weighted_undirected_module],
       url='https://github.com/Nathaniel-Rodriguez/graphgen.git',
       install_requires=[
           'networkx',
